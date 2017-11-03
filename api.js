@@ -1,7 +1,7 @@
 const routes = require("./routes");
 const models = require("./models");
 
-modules.exports.register = function(server, options, next) {
+module.exports.register = function(server, options, next) {
   server.bind({
     models: models
   });

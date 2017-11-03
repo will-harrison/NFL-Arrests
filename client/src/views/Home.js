@@ -41,12 +41,22 @@ class Home extends Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    api.teams.getAll().then(data => {
+      teams: [];
+      this.setState(state => {
+        return {
+          teams: teams
+        };
+      });
+    });
+  }
 
   render() {
     return (
       <div>
         <h1>Team List</h1>
+        {this.state.teams.map(team => <div>{team.Team_city}</div>)}
       </div>
     );
   }
