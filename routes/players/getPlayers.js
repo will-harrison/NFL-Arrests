@@ -3,7 +3,7 @@ module.exports = {
   path: "/api/players",
   handler: function (request, reply) {
     this.models.Player
-      .get()
+      .filter({})
       .then(res => reply(res))
       .catch(err => reply(err));
   }

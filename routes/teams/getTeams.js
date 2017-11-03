@@ -3,7 +3,8 @@ module.exports = {
   path: "/api/teams",
   handler: function (request, reply) {
     this.models.Team
-      .get()
+      .filter({})
+      .getJoin({ players: true })
       .then(res => reply(res))
       .catch(err => reply(err));
   }
