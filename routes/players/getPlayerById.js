@@ -1,6 +1,6 @@
 module.exports = {
   method: "GET",
-  path: "/api/teams/{playerId}",
+  path: "/api/players/{playerId}",
   handler: function (request, reply) {
     let { teamId } = request.params;
     this.models.Player
