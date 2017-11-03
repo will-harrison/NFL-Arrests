@@ -9,5 +9,6 @@ module.exports = (db) => {
     Team_Conference_Division: type.string(),
     Team_logo_id: type.string(),
     arrest_count: type.string(),
-  })
+  });
+  return Team;
 }

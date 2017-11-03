@@ -6,5 +6,6 @@ module.exports = (db) => {
     Team_name: type.string(),
     Position: type.string(),
     arrest_count: type.string()
-  })
+  });
+  return Player;
 }
