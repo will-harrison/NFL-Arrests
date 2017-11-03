@@ -1,6 +1,6 @@
 module.exports = {
   method: "GET",
-  path: "/api/playerss",
+  path: "/api/players",
   handler: function (request, reply) {
     this.models.Player
       .get()
