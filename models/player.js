@@ -1,6 +1,6 @@
 module.exports = (db) => {
   const type = db.type;
-  const Player = db.createModel("Player", {
+  const Player = db.createModel("Players", {
     Name: type.string(),
     Team: type.string(),
     Team_name: type.string(),
