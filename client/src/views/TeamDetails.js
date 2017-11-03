@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import api from "../api";
 
 class TeamDetails extends Component {
   constructor() {
@@ -6,6 +7,12 @@ class TeamDetails extends Component {
 
     this.state = {};
   }
+
+  componentDidMount() {
+    let id = this.props.match.params.id;
+    api.teams.getById(id).then(data => {});
+  }
+
   render() {
     return (
       <div>
