@@ -5,5 +5,9 @@
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "hapi": "^16.6.2",
+    "thinky": "^2.3.9"
   }
 }
