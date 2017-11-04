@@ -1,57 +1,86 @@
 import React, { Component } from "react";
 import api from "../api";
+import { Link } from "react-router-dom";
+import { Segment, Header, Image, Button } from "semantic-ui-react";
 
 class AllPlayers extends Component {
   constructor() {
     super();
 
     this.state = {
-      players: [
-        {
-          Name: "Kenny Britt",
-          Team: "TEN",
-          Team_name: "Titans",
-          Team_city: "Nashville",
-          Position: "WR",
-          arrest_count: "7"
-        },
-        {
-          Name: "Chris Henry",
-          Team: "CIN",
-          Team_name: "Bengals",
-          Team_city: "Cincinnati",
-          Position: "WR",
-          arrest_count: "6"
-        },
-        {
-          Name: "Adam Jones",
-          Team: "TEN",
-          Team_name: "Titans",
-          Team_city: "Nashville",
-          Position: "CB",
-          arrest_count: "6"
-        },
-        {
-          Name: "Aldon Smith",
-          Team: "SF",
-          Team_name: "49ers",
-          Team_city: "San Francisco",
-          Position: "LB",
-          arrest_count: "5"
-        }
-      ]
+      players: []
     };
   }
 
   componentDidMount() {
-    api.players.getAll().then(data => {});
+    api.players.getAll().then(data => {
+      this.setState(state => {
+        return {
+          players: data
+        };
+      });
+    });
   }
 
   render() {
     return (
       <div>
-        <h1>All Players</h1>
-        {this.state.players.map(player => <div>{player.Name}</div>)}
+        <Segment style={{ textAlign: "center" }} inverted>
+          <Header style={{ height: 70, fontSize: 40 }} inverted color="grey">
+            <Image
+              style={{ height: 70, width: 70 }}
+              src={
+                "https://vignette.wikia.nocookie.net/looneytunes/images/4/49/NFL-logo.png/revision/latest?cb=20140711021414"
+              }
+            />
+            All Players
+          </Header>
+        </Segment>
+
+        <div
+          style={{
+            padding: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}
+        >
+          <Button size={"small"} as={Link} to={"/"}>
+            Home
+          </Button>
+          <br />
+          <br />
+          <table>
+            <tbody>
+              {this.state.players
+                .sort((a, b) => {
+                  return b.arrest_count - a.arrest_count;
+                })
+                .map(player => (
+                  <tr>
+                    <td>
+                      <Link
+                        style={{ fontSize: 18 }}
+                        to={`/players/${player.id}`}
+                      >
+                        {player.Name}
+                      </Link>
+                    </td>
+                    <td>
+                      <span style={{ margin: "5px 15px" }}>
+                        {player.Team_name}
+                      </span>
+                    </td>
+                    <td>
+                      <span style={{ margin: "5px 15px" }}>
+                        {player.arrest_count} Arrests
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

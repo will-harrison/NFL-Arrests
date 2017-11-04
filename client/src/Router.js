@@ -10,6 +10,7 @@ class Router extends Component {
           <Route exact path={"/"} component={Home} />
           <Route exact path={"/players"} component={AllPlayers} />
           <Route exact path={"/team/:id"} component={TeamDetails} />
+          <Route exact path={"/players/:id"} component={PlayerDetails} />
         </div>
       </BrowserRouter>
     );
